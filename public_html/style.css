@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+main {
+    background-image: url("https://899thewave.fm/wp-content/uploads/sites/4/2019/03/supermarketcart_main-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: green;
+}
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+}
+header {
+    height: 10%;
+    background-color: green;
+    color: red;
+    font-family: 'Pacifico', cursive;
+    align-items: flex-end;
+}
+ul {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+}
+nav {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px 200px 10px 200px;
+}
+li {
+    list-style: none;
+    margin: 0px 30px 0px 30px;
+}
+a {
+    text-decoration: none;
+}
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    border: 2px solid red;
+    background-color: cornsilk;
+    padding: 5px;
+}
+.card img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid red;
+}
+form {
+    border: 2px solid green;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+button {
+    background-color: green;
+    margin-top: 5px;
+}
+h2 {
+    color: red;
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+}
