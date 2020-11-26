@@ -1,1 +1,1 @@
-[{"email":"a@a.aa","password":"a"},{"email":"b@b.bb","password":"b"},{"email":"c@c.cc","password":"c"},{"email":"e@e.ee","password":"e"},{"email":"test@test.com","password":"test"}]
+{"vienas":[{"name":"one","email":"u@u.uu"},{"name":"one","email":"u@u.uu"}],"antras":[{"name":"two","email":"e@e.ee"},{"name":"two","email":"e@e.ee"}],"trecias":[{"name":"three","email":"w@w.ww"},{"name":"three","email":"w@w.ww"}]}
