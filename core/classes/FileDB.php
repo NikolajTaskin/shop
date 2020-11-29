@@ -1,27 +1,33 @@
 <?php
 
 
-
-/**
- * Class FileDB
- */
 class FileDB
 {
-    private string $file_name;
-    private array $data;
+    private $file_name;
+    private $data;
 
     /**
      * FileDB constructor.
      *
-     * @param $file_name
+     * @param string $file_name
      */
-    public function __construct($file_name)
+    public function __construct(string $file_name)
     {
         $this->file_name = $file_name;
     }
 
     /**
      * Set $data variable
+     *
+     * @param array $data_array
+     */
+    public function setData(array $data_array)
+    {
+        $this->data = $data_array;
+    }
+
+    /**
+     * Get $data variable
      *
      * @return array
      */
@@ -31,17 +37,7 @@ class FileDB
     }
 
     /**
-     * Get $data variable
-     *
-     * @param array $data_array
-     */
-    public function setData(array $data_array): void
-    {
-        $this->data = $data_array;
-    }
-
-    /**
-     * Save JSON representation of an array to database file
+     * Save data to file
      *
      * @return bool
      */
@@ -54,7 +50,7 @@ class FileDB
     }
 
     /**
-     * Get data from database file and decode to array
+     * Get file, decode it to array and load it to $data property
      *
      * @return bool
      */
@@ -75,46 +71,35 @@ class FileDB
         return false;
     }
 
-//    /**
-//     * Create a new array with $table_name inside of $data
-//     *
-//     * @param string $table_name
-//     * @return bool
-//     */
-//    public function createTable(string $table_name): bool
-//    {
-//        if (!isset($this->data[$table_name])) {
-//            $this->data[$table_name] = [];
-//            return true;
-//        }
-//
-//        return false;
-//
-//    }
+    /**
+     * Checks if this index already exists in data.
+     *
+     * @param string $table_name
+     * @return bool
+     */
+    public function tableExists(string $table_name): bool
+    {
+
+        return array_key_exists($table_name, $this->getData());
+    }
 
     /**
-     * Function creates new array in $this->data array with particular index.
-     * @param $table_name - array index.
+     * Checks if index already exists in data
+     * if it doesnt -  writes an array with index $table_name
+     * and returns true
+     *
+     * @param string $table_name
      * @return bool
      */
     public function createTable(string $table_name): bool
     {
         if (!$this->tableExists($table_name)) {
             $this->data[$table_name] = [];
+
             return true;
         }
-        return false;
-    }
 
-    /**
-     * Function checks if table with given name exists.
-     *
-     * @param $table_name
-     * @return bool
-     */
-    public function tableExists($table_name): bool
-    {
-        return isset($this->data[$table_name]);
+        return false;
     }
 
     /**
@@ -134,9 +119,8 @@ class FileDB
         return false;
     }
 
-
     /**
-     * Deletes table content leaving the index
+     * Empty data inside array, not removing the index
      *
      * @param string $table_name
      * @return bool
@@ -145,33 +129,12 @@ class FileDB
     {
         if ($this->tableExists($table_name)) {
             $this->data[$table_name] = [];
+
             return true;
         }
+
         return false;
     }
-
-
-//    /**
-//     * Function adds rows
-//     *
-//     * @param $table_name
-//     * @param $row
-//     * @param null $row_id
-//     * @return bool|int|string|null
-//     */
-//    public function insertRow(string $table_name, array $row, $row_id = null)
-//    {
-//        if (!isset($this->data[$table_name][$row_id])) {
-//            if ($row_id == null) {
-//                $this->data[$table_name][] = $row;
-//                $row_id = array_key_last($this->data[$table_name]);
-//            } else {
-//                $this->data[$table_name][$row_id] = $row;
-//            }
-//            return $row_id;
-//        }
-//        return false;
-//    }
 
     /**
      * Insert row(array) into created table
@@ -184,7 +147,7 @@ class FileDB
     public function insertRow(string $table_name, array $row, $row_id = null)
     {
         if (!$this->rowExists($table_name, $row_id)) {
-            if ($row_id === null) {
+            if ($row_id == null) {
                 $this->data[$table_name][] = $row;
                 $row_id = array_key_last($this->data[$table_name]);
             } else {
@@ -209,13 +172,12 @@ class FileDB
         return array_key_exists($row_id, $this->data[$table_name]);
     }
 
-
     /**
-     * Update $table[$row_id] content
+     * Update table row by selecting row_id
      *
      * @param string $table_name
      * @param $row_id
-     * @param $row
+     * @param array $row
      * @return bool
      */
     public function updateRow(string $table_name, $row_id, array $row): bool
@@ -230,7 +192,7 @@ class FileDB
     }
 
     /**
-     * Deletes row from the designated table
+     * Deletes row by its row_id
      *
      * @param string $table_name
      * @param $row_id
@@ -248,26 +210,23 @@ class FileDB
     }
 
     /**
-     * Return from $table row, which ID is [$row_id]
+     * Get row content by row_id
      *
      * @param string $table_name
      * @param $row_id
-     * @return bool
+     * @return false|array
      */
     public function getRowById(string $table_name, $row_id)
     {
         if ($this->rowExists($table_name, $row_id)) {
             return $this->data[$table_name][$row_id];
-
         }
 
         return false;
     }
 
-
-
     /**
-     * Suranda eilutes iš table pagal tai, kokie $conditions nurodyti stulpeliams
+     *Returns rows array that have the conditions written in the function call.
      *
      * @param string $table_name
      * @param array $conditions
@@ -275,48 +234,49 @@ class FileDB
      */
     public function getRowsWhere(string $table_name, array $conditions = []): array
     {
-        $results = [];
+        $found_array = [];
 
         foreach ($this->data[$table_name] as $row_id => $row) {
             $found = true;
-
-            foreach ($conditions as $condition_id => $condition_value) {
-                if ($row[$condition_id] !== $condition_value) {
+            foreach ($conditions as $condition_key => $condition) {
+                if ($row[$condition_key] !== $condition) {
                     $found = false;
                     break;
                 }
             }
 
             if ($found) {
-                $results[$row_id] = $row;
+                $found_array[$row_id] = $row;
             }
         }
 
-        return $results;
+        return $found_array;
     }
 
     /**
-     * Gražina vienos eilutės array pagal tai, kokie $conditions nurodyti
+     *Returns row array that have the conditions written in the function call.
      *
      * @param string $table_name
      * @param array $conditions
-     * @return false|array
+     * @return array|false
      */
-    public function getRowWhere(string $table_name, array $conditions)
+    public function getRowWhere(string $table_name, array $conditions = [])
     {
         foreach ($this->data[$table_name] as $row_id => $row) {
             $found = true;
-            foreach ($conditions as $condition_id => $condition_value) {
-                var_dump($row);
-                if ($row[$condition_id] !== $condition_value) {
+            foreach ($conditions as $condition_key => $condition) {
+                if ($row[$condition_key] !== $condition) {
                     $found = false;
                     break;
                 }
             }
+
             if ($found) {
                 return $row;
             }
         }
+
         return false;
     }
+
 }

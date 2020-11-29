@@ -1,23 +1,27 @@
 <?php
+
+
 /**
- * Aprašoma navigacija priklausomai nuo prisijungimo statuso
+ *
+ * Returns an array for navigation,
+ * with name and links
  *
  * @return string[]
  */
-function navigation_bar(): array
+function nav(): array
 {
+    $nav = ['/index.php' => 'Home'];
+
     if (is_logged_in()) {
-        return [
-            'Pagrindinis' => '/index.php',
-            'Parduoti' => '/admin/add.php',
-            'Atsijungti' => '/logout.php',
+        return $nav + [
+            '/admin/add.php' => 'Add',
+            '/admin/my.php' => 'Personal blocks',
+            '/logout.php' => 'Logout',
         ];
     } else {
-        return [
-            'Pagrindinis' => '/index.php',
-            'Registracija' => '/register.php',
-            'Prisijungti' => '/login.php',
-
+        return $nav + [
+            '/register.php' => 'Register',
+            '/login.php' => 'Login',
         ];
     }
 }

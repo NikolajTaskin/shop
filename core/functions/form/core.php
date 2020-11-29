@@ -1,59 +1,57 @@
 <?php
 
-/**
- * Get form inputs and filter them (e.g. sanitize special characters).
- *
- * @param array $form
- * @return array|null
- */
-function get_clean_input(array $form): ?array
+function get_clean_input($form)
 {
     $parameters = [];
 
-    foreach ($form['fields'] as $index => $input) {
-        $parameters[$index] = FILTER_SANITIZE_SPECIAL_CHARS;
+    foreach ($form['fields'] as $key => $input) {
+        $parameters[$key] = FILTER_SANITIZE_SPECIAL_CHARS;
     }
 
     return filter_input_array(INPUT_POST, $parameters);
 }
 
+
 /**
- * Helper function to run validation functions of forms and fields
+ * Tikrinama pateikta forma pritaikant kiekvieno laukelio validatorius.
  *
- * @param array $form
- * @param array $form_values
+ * @param array $form Formos masyvas.
+ * @param array $form_values Išvalytos input'ų vertės.
  * @return bool
  */
 function validate_form(array &$form, array $form_values): bool
 {
     $is_valid = true;
 
-    foreach ($form['fields'] as $field_index => &$field) {
-        foreach ($field['validators'] ?? [] as $validator_index => $validator) {
-            if (is_array($validator)) {
-                $field_is_valid = $validator_index($form_values[$field_index], $field, $params = $validator);
+    foreach ($form['fields'] as $field_id => &$field) {
+        foreach ($field['validators'] ?? [] as $function_index => $function_name) {
+
+            if (is_array($function_name)) {
+                $params = $function_name;
+                $field_is_valid = $function_index($form_values[$field_id], $field, $params);
             } else {
-                $field_is_valid = $validator($form_values[$field_index], $field);
+                $field_is_valid = $function_name($form_values[$field_id], $field);
             }
+
             if (!$field_is_valid) {
                 $is_valid = false;
                 break;
             }
         }
+
     }
 
-    if (isset($form['validators'])) {
-        foreach ($form['validators'] as $validator_index => $validator) {
-            if (is_array($validator)) {
-                $field_is_valid = $validator_index($form_values, $form, $params = $validator);
-            } else {
-                $field_is_valid = $validator($form_values, $form);
-            }
+    foreach ($form['validators'] ?? [] as $validator_name => $validator) {
 
-            if (!$field_is_valid) {
-                $is_valid = false;
-                break;
-            }
+        if (is_array($validator)) {
+            $field_is_valid = $validator_name($form_values, $form, $params = $validator);
+        } else {
+            $field_is_valid = $validator($form_values, $form);
+        }
+
+        if (!$field_is_valid) {
+            $is_valid = false;
+            break;
         }
     }
 

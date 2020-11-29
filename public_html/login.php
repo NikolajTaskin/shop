@@ -1,78 +1,84 @@
 <?php
-
 require '../bootloader.php';
 
-if (is_logged_in()) {
-    header("Location: /admin/add.php");
-    exit();
-}
-
+$nav = nav();
 
 $form = [
     'attr' => [
-        'method' => 'POST',
+        'method' => 'POST'
     ],
     'fields' => [
         'email' => [
-            'label' => 'El. paštas',
-            'type' => 'text',
+            'label' => 'Email',
+            'type' => 'email',
             'validators' => [
                 'validate_field_not_empty',
-                'validate_email',
+                'validate_email'
             ],
             'extra' => [
                 'attr' => [
-                    'placeholder' => 'Įvesk emailą',
-                    'class' => 'input-field',
-                ],
-            ],
+                    'placeholder' => 'email@mail',
+                    'class' => 'input-field'
+                ]
+            ]
         ],
         'password' => [
-            'label' => 'Slaptažodis',
-            'type' => 'text',
+            'label' => 'Password',
+            'type' => 'password',
             'validators' => [
                 'validate_field_not_empty',
             ],
             'extra' => [
                 'attr' => [
-                    'placeholder' => 'Įvesk slaptažodį',
-                    'class' => 'input-field',
-                ],
-            ],
-        ],
+                    'placeholder' => 'password',
+                    'class' => 'input-field'
+                ]
+            ]
+        ]
     ],
     'buttons' => [
-        'send' => [
-            'title' => 'Prisiloginti',
+        'submit' => [
+            'title' => 'Prisijunk',
             'type' => 'submit',
             'extra' => [
                 'attr' => [
-                    'class' => 'btn',
-                ],
-            ],
+                    'class' => 'btn'
+                ]
+            ]
         ],
+        'clear' => [
+            'title' => 'Clear',
+            'type' => 'reset',
+            'extra' => [
+                'attr' => [
+                    'class' => 'btn'
+                ]
+            ]
+        ]
     ],
     'validators' => [
-        'validate_login' => [
-            'email',
-            'password',
-        ]
+        'validate_login'
     ]
 ];
 
 $clean_inputs = get_clean_input($form);
 
 if ($clean_inputs) {
-    $form_success = validate_form($form, $clean_inputs);
+    $success = validate_form($form, $clean_inputs);
 
-    if ($form_success) {
-        $_SESSION['email'] = $clean_inputs['email'];
-        $_SESSION['password'] = $clean_inputs['password'];
+    if ($success) {
+        $p = 'Sveikinu prisijungus';
 
-        $text_output = 'Prisijungta sekmingai ';
+        $_SESSION = $clean_inputs;
+
+        if (is_logged_in()) {
+            header("Location: admin/add.php");
+            exit();
+        }
+    } else {
+        $p = 'Eik nx';
     }
 }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -81,19 +87,24 @@ if ($clean_inputs) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <title>Prisijungimas prie paskyros</title>
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/media/style.css">
+    <title>Login</title>
 </head>
 <body>
-    <header>
-        <?php require ROOT . '/core/templates/nav.tpl.php'; ?>
-    </header>
-    <main>
-        <h2>Turi paskyra? Prisilogink</h2>
+<main>
+
+    <?php require ROOT . '/app/templates/nav.tpl.php'; ?>
+
+    <article class="wrapper">
+        <h1 class="header header--main">Prisijunki</h1>
+
         <?php require ROOT . '/core/templates/form.tpl.php'; ?>
-        <?php if (isset($text_output)) print $text_output; ?>
-    </main>
+
+        <?php if (isset ($p)): ?>
+            <p><?php print $p; ?></p>
+        <?php endif; ?>
+
+    </article>
+</main>
 </body>
 </html>

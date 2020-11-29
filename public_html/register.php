@@ -1,122 +1,133 @@
 <?php
-
 require '../bootloader.php';
 
-if (is_logged_in()) {
-    header("Location: /index.php");
-    exit();
-}
-
+$nav = nav();
 
 $form = [
     'attr' => [
-        'method' => 'POST',
+        'method' => 'POST'
     ],
     'fields' => [
         'email' => [
-            'label' => 'El. paštas',
-            'type' => 'text',
+            'label' => 'Email',
+            'type' => 'email',
+            'value' => '',
             'validators' => [
                 'validate_field_not_empty',
-                'validate_email',
                 'validate_user_unique',
+                'validate_email'
             ],
             'extra' => [
                 'attr' => [
-                    'placeholder' => 'Įvesk emailą',
-                    'class' => 'input-field',
+                    'placeholder' => 'email@mail',
+                    'class' => 'input-field'
                 ]
             ]
         ],
         'password' => [
-            'label' => 'Slaptažodis',
-            'type' => 'text',
+            'label' => 'Password',
+            'type' => 'password',
+            'value' => '',
             'validators' => [
                 'validate_field_not_empty',
             ],
             'extra' => [
                 'attr' => [
-                    'placeholder' => 'Įvesk slaptažodį',
-                    'class' => 'input-field',
+                    'placeholder' => 'password',
+                    'class' => 'input-field'
                 ]
             ]
         ],
         'password_repeat' => [
-            'label' => 'Pakartok slaptažodį',
-            'type' => 'text',
+            'label' => 'Password repeat',
+            'type' => 'password',
+            'value' => '',
             'validators' => [
                 'validate_field_not_empty',
             ],
             'extra' => [
                 'attr' => [
-                    'placeholder' => 'Įvesk slaptažodį dar kartą',
-                    'class' => 'input-field',
+                    'placeholder' => 'password',
+                    'class' => 'input-field'
                 ]
             ]
         ],
     ],
     'buttons' => [
-        'send' => [
+        'submit' => [
             'title' => 'Registruokis',
             'type' => 'submit',
             'extra' => [
                 'attr' => [
-                    'class' => 'btn',
+                    'class' => 'btn'
+                ]
+            ]
+        ],
+        'clear' => [
+            'title' => 'Clear',
+            'type' => 'reset',
+            'extra' => [
+                'attr' => [
+                    'class' => 'btn'
                 ]
             ]
         ]
     ],
     'validators' => [
-        'validate_fields_match' => [
+        'validate_field_match' => [
             'password',
             'password_repeat'
-        ]
+        ],
     ]
 ];
 
 $clean_inputs = get_clean_input($form);
 
 if ($clean_inputs) {
-    $is_valid = validate_form($form, $clean_inputs);
+    $success = validate_form($form, $clean_inputs);
 
-    if ($is_valid) {
+    if ($success) {
         unset($clean_inputs['password_repeat']);
 
-        // Get data from file
-        $input_from_json = file_to_array(ROOT . '/app/data/db.json');
-        // Append new data from form
-        $input_from_json[] = $clean_inputs;
-        // Save old data together with appended data back to file
-        array_to_file($input_from_json, ROOT . '/app/data/db.json');
+        $fileDB = new FileDB(DB_FILE);
 
-        $text_output = 'Sveikinu užsiregistravus';
+        $fileDB->load();
+        $fileDB->insertRow('users', $clean_inputs);
+        $fileDB->save();
+
+        $p = 'Sveikinu uzsireginus';
+
+        header("Location: login.php");
     } else {
-        $text_output = 'Registracija nesekminga';
+        $p = 'Eik nx';
     }
 }
-
-
 ?>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <title>Naujo vartotojo registracija</title>
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/media/style.css">
+    <title>Register</title>
 </head>
 <body>
-    <header>
-        <?php require ROOT . '/core/templates/nav.tpl.php'; ?>
-    </header>
-    <main>
-        <h2>Registruokis</h2>
+<main>
+
+    <?php require ROOT . '/app/templates/nav.tpl.php'; ?>
+
+    <article class="wrapper">
+        <h1 class="header header--main">Reginkis</h1>
+
         <?php require ROOT . '/core/templates/form.tpl.php'; ?>
-        <?php if (isset($text_output)) print $text_output; ?>
-    </main>
+
+        <?php if (isset ($p)): ?>
+            <p><?php print $p; ?></p>
+        <?php endif; ?>
+
+    </article>
+</main>
 </body>
 </html>
-
