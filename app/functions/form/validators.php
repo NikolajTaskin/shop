@@ -1,77 +1,54 @@
 <?php
-/**
- *
- * Checks if user(data) already exists in our saved file.
- *
- * If there is no such data(user) returns true.
- * If the data already exist in file, writes an error and returns false.
- *
- * @param string $field_input - clean input value
- * @param array $field - input array
- * @return bool
- */
-function validate_user_unique(string $field_input, array &$field): bool
-{
-    $fileDB = new FileDB(DB_FILE);
-    $fileDB->load();
 
-    if ($fileDB->getRowWhere('users', ['email' => $field_input])) {
-        $field['error'] = 'Toks vartotojas jau egzistuoja';
-
-        return false;
-    }
-
-    return true;
-}
+// //////////////////////////////
+// [1] FORM VALIDATORS
+// //////////////////////////////
+use App\App;
 
 /**
+ * Check if login is successful
  *
- *Checks if there is such email and password in the database.
- *
- * If there is such user and password is the same as in database returns true.
- * If email or password of $filtered_input are not in the database(or not the same),
- * writes an error and returns false.
- *
- * @param array $filtered_input - clean inputs array with values
- * @param array $form - form array
+ * @param $form_values
+ * @param array $form
  * @return bool
  */
-function validate_login(array $filtered_input, array &$form): bool
+function validate_login($form_values, array &$form): bool
 {
-    $fileDB = new FileDB(DB_FILE);
-    $fileDB->load();
 
-    if ($fileDB->getRowWhere('users', [
-        'email' => $filtered_input['email'],
-        'password' => $filtered_input['password']
-    ])) {
+    if ($fileDB=App::$db->getRowWhere('users', [
+        'email' => $form_values['email'],
+        'password' => $form_values['password']])) {
         return true;
     }
 
-    $form['error'] = 'Suvesti neteisingi duomenys';
+
+    $form['error'] = 'Unable to login: check your email and/or password';
 
     return false;
 }
 
+// //////////////////////////////
+// [2] FIELD VALIDATORS
+// //////////////////////////////
+
 /**
- * Checks if wanted block position is alrady filled
+ * Check if email is available for registration, i.e. if it is not already taken
  *
- * @param array $form_input
- * @param array $form
+ * @param string $field_value
+ * @param array $field
  * @return bool
  */
-function validate_tetris_unique(array $form_input, array &$form): bool
+function validate_user_unique(string $field_value, array &$field): bool
 {
-    $fileDB = new FileDB(DB_FILE);
-    $fileDB->load();
 
-    if ($fileDB->getRowWhere('items', [
-        'X' => $form_input['X'],
-        'Y' => $form_input['Y']
-    ])) {
-        $form['error'] = 'Ši bloko vieta jau užimta';
+    $db_data = $fileDB=App::$db->getData();
 
-        return false;
+    foreach ($db_data['users'] as $entry) {
+        if ($field_value === $entry['email']) {
+            $field['error'] = 'Email is already taken: enter new email.';
+
+            return false;
+        }
     }
 
     return true;

@@ -1,0 +1,4 @@
+app/data/db.json
+composer.lock
+.idea
+.DS_Store

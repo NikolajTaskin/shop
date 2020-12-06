@@ -2,11 +2,11 @@
 
 use App\App;
 use App\Views\BasePage;
+use App\Views\Forms\Admin\EditForm;
 use App\Views\Navigation;
-use Core\Cookie;
 use Core\View;
 
-require '../bootloader.php';
+require '../../bootloader.php';
 
 $content = new View([
     'title' => 'Welcome to the eSHOP',
@@ -14,15 +14,22 @@ $content = new View([
 ]);
 
 
-$cookie = new Cookie('User_id');
-$cookie->getCookie();
-
 $nav = new Navigation();
+
+$form = new EditForm();
 
 $page = new BasePage([
     'title' => 'Index',
-    'content' => $content->render(ROOT . '/app/templates/content/index.tpl.php'),
+    'content' => $form->render(),
 ]);
+//
+//if ($form->validate()) {
+//
+//    $clean_inputs = $form->values();
+//    $items= App::$db->insertRow('items', $clean_inputs);
+//}
 
 print $page->render();
+
+
 ?>
