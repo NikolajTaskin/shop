@@ -1,7 +1,11 @@
 <form <?php print form_attr($data); ?>>
     <?php foreach ($data['fields'] as $field_id => $field): ?>
-        <label>
-            <p><?php print $field['label']; ?></p>
+
+        <?php if (isset($field['label'])): ?>
+            <label>
+                <p><?php print $field['label']; ?></p>
+        <?php endif; ?>
+
             <?php if ($field['type'] == 'select') : ?>
                 <select <?php print select_attr($field_id, $field); ?>>
                     <?php foreach ($field['options'] as $option_id => $option_title): ?>

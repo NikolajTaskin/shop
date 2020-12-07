@@ -1,1 +1,14 @@
-{"users":[{"email":"test@test.lt","password":"test"},{"email":"test@test.com","password":"123t"},{"email":"test9@test9.com","password":"123t"},{"email":"mail@mail.com","password":"mai1"}],"items":[{"name":"keyboard","price":"6","img":"https:\/\/www.techsilver.co.uk\/wp-content\/uploads\/2015\/08\/Big-Button-Keyboard-Both-Colours.png","description":"qwerty"},{"name":"mouse","price":"2","img":"https:\/\/regisbox.com\/wp-content\/uploads\/2019\/06\/cute-cartoon-mouse-hamster-wireless-mouse-kawaii-mouse.jpg","description":"little mouse"},{"name":"Floppy","price":"3","img":"https:\/\/images-na.ssl-images-amazon.com\/images\/I\/41P0JwP7c5L._AC_UL600_SR600,600_.jpg","description":"3D printed save icon"},{"name":"printer","price":"15","img":"https:\/\/digitalcontent.api.tesco.com\/v2\/media\/ghs\/7c7a0d73-0e0a-4226-8f0b-9ba1320a7d65\/snapshotimagehandler_1581193296.jpeg?h=540&#38;w=540","description":"lousy one"},{"name":"calculator","price":"8","img":"https:\/\/upload.wikimedia.org\/wikipedia\/commons\/c\/cf\/Casio_calculator_JS-20WK_in_201901_002.jpg","description":"+-*\/="}],"track_users":[]}
+{
+  "users": [
+    {
+      "email": "test@test.lt",
+      "password": "test"
+    },
+    {
+      "email": "test@test.com",
+      "password": "tes1"
+    }
+  ],
+  "items": [],
+  "track_users": []
+}

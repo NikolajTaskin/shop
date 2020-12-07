@@ -23,7 +23,7 @@ if ($form->validate()) {
 
     App::$db->insertRow('items', $clean_inputs);
 
-    $p = 'Sveikinu pridejus preke';
+    $p = 'You\'ve added new item';
 }
 
 $content = new View([

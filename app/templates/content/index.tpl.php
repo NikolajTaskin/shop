@@ -9,6 +9,9 @@
             <img class="item_image" src="<?php print $product['img']; ?>" alt="">
             <p><?php print $product['description']; ?></p>
             <p class="price"><?php print $product['price']; ?> $</p>
+<!--            <form method="POST" action="/admin/edit.php">-->
+<!--                <input type="hidden" name="id" value="--><?php //print $product['id']; ?><!--">-->
+<!--            </form>-->
         </div>
 
     <?php endforeach; ?>

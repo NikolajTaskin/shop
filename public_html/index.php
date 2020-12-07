@@ -7,7 +7,7 @@ use Core\View;
 require '../bootloader.php';
 
 if (App::$session->getUser()) {
-    $h3 = "Sveiki sugrize {$_SESSION['email']}";
+    $h3 = "Welcome back {$_SESSION['email']}, we've missed you";
 } else {
     $h3 = 'Jus neprisijunges';
 }

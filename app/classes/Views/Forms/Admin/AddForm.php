@@ -63,6 +63,11 @@ class AddForm extends Form
                     'validators' => [
                         'validate_field_not_empty'
                     ],
+                    'extra' => [
+                        'attr' => [
+                            'placeholder' => 'Short description',
+                        ]
+                    ]
                 ],
             ],
             'buttons' => [
