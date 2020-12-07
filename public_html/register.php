@@ -1,39 +1,38 @@
 <?php
+require '../bootloader.php';
 
 use App\App;
 use App\Views\BasePage;
 use App\Views\Forms\RegisterForm;
-use App\Views\Navigation;
-
-require '../bootloader.php';
+use Core\View;
 
 if (App::$session->getUser()) {
-    header('Location: login.php');
+    header("Location: /index.php");
     exit();
 }
-
-$nav = new Navigation();
 
 $form = new RegisterForm();
 
 if ($form->validate()) {
     $clean_inputs = $form->values();
+
     unset($clean_inputs['password_repeat']);
-    $user = $clean_inputs;
 
-    App::$db->insertRow('users', $user);
+    App::$db->insertRow('users', $clean_inputs);
 
-    header('Location: login.php');
+    header("Location: login.php");
 }
 
+$content = new View([
+    'title' => 'Registruokis',
+    'form' => $form->render()
+]);
+
 $page = new BasePage([
-        'title' => 'Register',
-        'content' => $form->render(),
-    ]
-);
+    'title' => 'Register',
+    'content' => $content->render( ROOT . '/app/templates/content/forms.tpl.php')
+]);
 
 print $page->render();
 
 ?>
-
-

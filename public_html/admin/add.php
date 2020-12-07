@@ -3,32 +3,40 @@
 use App\App;
 use App\Views\BasePage;
 use App\Views\Forms\Admin\AddForm;
-use App\Views\Navigation;
+use Core\View;
 
 require '../../bootloader.php';
 
-$nav = new Navigation();
+if (!App::$session->getUser()) {
+    header("Location: /login.php");
+    exit();
+}
+//
+//var_dump(App::$tracker->getTrackingData());
+//var_dump(App::$tracker->save());
 
 $form = new AddForm();
 
+
 if ($form->validate()) {
-    $card_id = [
-        'id' => $_SESSION['email']
-    ];
-    $item_id = [
-        'item_id' => uniqid()
-    ];
     $clean_inputs = $form->values();
-    $items= App::$db->insertRow('items', $clean_inputs + $card_id + $item_id);
+
+    App::$db->insertRow('items', $clean_inputs);
+
+    $p = 'Sveikinu pridejus preke';
 }
 
+$content = new View([
+    'title' => 'Add',
+    'form' => $form->render(),
+    'message' => $p ?? null
+]);
+
 $page = new BasePage([
-        'title' => 'Add',
-        'content' => $form->render(),
-    ]
-);
+    'title' => 'Add',
+    'content' => $content->render( ROOT . '/app/templates/content/forms.tpl.php')
+]);
 
 print $page->render();
-
 ?>
 

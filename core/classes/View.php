@@ -15,8 +15,8 @@ class View
 
     public function render($template_path)
     {
-        if (!file_exists($template_path)) {
-            throw new \Exception("$template_path template does not exits");
+        if (!file_exists($template_path)){
+            throw new \Exception("{$template_path} template does not exist");
         }
 
         $data = $this->data;
@@ -25,9 +25,7 @@ class View
 
         require $template_path;
 
-
         return ob_get_clean();
+
     }
-
 }
-

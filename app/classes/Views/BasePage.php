@@ -14,10 +14,9 @@ class BasePage extends Page
 
         parent::__construct($data + [
                 'css' => [
-                    '/media/styles.css'
+                    '/media/style.css'
                 ],
                 'header' => $nav->render()
             ]);
     }
-
 }

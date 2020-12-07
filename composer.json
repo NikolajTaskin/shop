@@ -1,16 +1,16 @@
 {
-  "name": "vendor_name/www.iml",
+  "name": "vendor_name/www",
   "description": "description",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
-      "name": "nikolaj",
+      "name": "Agnes",
       "email": "email@example.com"
     }
   ],
   "require": {
-    "ext-json": "*"
+    
   },
   "autoload": {
     "psr-4": {

@@ -2,27 +2,27 @@
 
 use App\App;
 use App\Views\BasePage;
-use App\Views\Navigation;
-use Core\Cookie;
 use Core\View;
 
 require '../bootloader.php';
 
+if (App::$session->getUser()) {
+    $h3 = "Sveiki sugrize {$_SESSION['email']}";
+} else {
+    $h3 = 'Jus neprisijunges';
+}
+
 $content = new View([
-    'title' => 'Welcome to the eSHOP',
-    'products' => App::$db->getRowsWhere('items'),
+    'title' => 'Welcome to your eSHOP',
+    'heading' => $h3,
+    'products' => App::$db->getRowsWhere('items')
 ]);
 
-
-$cookie = new Cookie('User_id');
-$cookie->getCookie();
-
-$nav = new Navigation();
-
 $page = new BasePage([
-    'title' => 'Index',
-    'content' => $content->render(ROOT . '/app/templates/content/index.tpl.php'),
+    'title' => 'Shop',
+    'content' => $content->render(ROOT . '/app/templates/content/index.tpl.php')
 ]);
 
 print $page->render();
+
 ?>

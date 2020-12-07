@@ -1,10 +1,16 @@
-<h1 class="title"><?php print $data['title'] ?></h1>
+<h1 class="header main_header"><?php print $data['title']; ?></h1>
+<h3 class="header"><?php print $data['heading']; ?></h3>
 <section class="grid-container">
+
     <?php foreach ($data['products'] as $product) : ?>
-        <div class="grid-item">
-            <h2 class="item-name"><?php print $product['item_name']; ?></h2>
-            <img class="item-img" src="<?php print $product['item_photo']; ?>" alt="">
-            <h2>Price: <?php print $product['item_price'] ?> eur</h2>
+
+        <div class="item_card">
+            <h4><?php print $product['name']; ?></h4>
+            <img class="item_image" src="<?php print $product['img']; ?>" alt="">
+            <p><?php print $product['description']; ?></p>
+            <p class="price"><?php print $product['price']; ?> $</p>
         </div>
+
     <?php endforeach; ?>
+
 </section>

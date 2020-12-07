@@ -1,11 +1,9 @@
 <?php
-require '../bootloader.php';
 
 use App\App;
-use Core\Cookie;
 
-$cookie = new Cookie('User_id');
-$cookie->unset();
+require '../bootloader.php';
 
-App::$session->logout('index.php');
+//var_dump(App::$tracker->usersTrack());
 
+App::$session->logout('/login.php');

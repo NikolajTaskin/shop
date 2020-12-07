@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Views\Forms\Admin;
 
 use Core\Views\Form;
@@ -11,39 +10,25 @@ class EditForm extends Form
     {
         parent::__construct([
             'attr' => [
-                'method' => 'GET',
+                'method' => 'POST'
             ],
             'fields' => [
-                'item_name' => [
-                    'label' => 'Item name',
+                'name' => [
+                    'label' => 'Title',
                     'type' => 'text',
                     'value' => '',
                     'validators' => [
-                        'validate_field_not_empty',
+                        'validate_field_not_empty'
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'Type item name',
-                            'class' => 'input-field',
-                        ],
-                    ],
+                            'placeholder' => 'Title',
+                            'class' => 'input-field'
+                        ]
+                    ]
                 ],
-                'item_photo' => [
-                    'label' => 'Item photo',
-                    'type' => 'text',
-                    'value' => '',
-                    'validators' => [
-                        'validate_field_not_empty',
-                    ],
-                    'extra' => [
-                        'attr' => [
-                            'placeholder' => 'Add image url',
-                            'class' => 'input-field',
-                        ],
-                    ],
-                ],
-                'item_price' => [
-                    'label' => 'Item price',
+                'price' => [
+                    'label' => 'Price',
                     'type' => 'number',
                     'value' => '',
                     'validators' => [
@@ -51,23 +36,53 @@ class EditForm extends Form
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'Type price $ ',
-                            'class' => 'input-field',
-                        ],
+                            'placeholder' => 'Price',
+                            'class' => 'input-field'
+                        ]
+                    ]
+                ],
+                'img' => [
+                    'label' => 'Product image',
+                    'type' => 'text',
+                    'value' => '',
+                    'validators' => [
+                        'validate_field_not_empty',
+                    ],
+                    'extra' => [
+                        'attr' => [
+                            'placeholder' => 'http://url',
+                            'class' => 'input-field'
+                        ]
+                    ]
+                ],
+                'description' => [
+                    'label' => 'Description',
+                    'type' => 'textarea',
+                    'validators' => [
+                        'validate_field_not_empty'
                     ],
                 ],
             ],
             'buttons' => [
-                'send' => [
+                'submit' => [
                     'title' => 'Save changes',
                     'type' => 'submit',
                     'extra' => [
                         'attr' => [
-                            'class' => 'btn',
-                        ],
-                    ],
+                            'class' => 'btn'
+                        ]
+                    ]
                 ],
-            ],
+//                'clear' => [
+//                    'title' => 'Clear',
+//                    'type' => 'reset',
+//                    'extra' => [
+//                        'attr' => [
+//                            'class' => 'btn'
+//                        ]
+//                    ]
+//                ]
+            ]
         ]);
     }
 }

@@ -2,23 +2,42 @@
 
 use App\App;
 use App\Views\BasePage;
-use App\Views\Navigation;
-use Core\View;
+use Core\Views\Link;
+use Core\Views\Table;
 
 require '../../bootloader.php';
 
-$content = new View([
-    'title' => 'Welcome to the eSHOP',
-    'products' => App::$db->getRowsWhere('items'),
+if (!App::$session->getUser()) {
+    header("Location: /login.php");
+    exit();
+}
+
+$rows = App::$db->getRowsWhere('items');
+
+foreach ($rows as $id => $row){
+    $link = new Link([
+        'link' => "/admin/edit.php?id={$id}",
+        'text' => 'Edit'
+    ]);
+
+    $rows[$id]['link'] = $link->render();
+}
+
+$table = new Table([
+    'headers' => [
+        'Item',
+        'Price',
+        'Image url',
+        'Description',
+        'Options'
+    ],
+    'rows' => $rows
 ]);
 
-
-$nav = new Navigation();
-
 $page = new BasePage([
-    'title' => 'Index',
-    'content' => $content->render(ROOT . '/app/templates/content/list.tpl.php'),
+    'title' => 'Edit List',
+    'content' => $table->render()
 ]);
 
 print $page->render();
-?>
+

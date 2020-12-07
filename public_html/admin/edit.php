@@ -3,33 +3,43 @@
 use App\App;
 use App\Views\BasePage;
 use App\Views\Forms\Admin\EditForm;
-use App\Views\Navigation;
 use Core\View;
 
 require '../../bootloader.php';
+if (!App::$session->getUser()) {
+    header("Location: /login.php");
+    exit();
+}
+$row_id = $_GET['id'] ?? null;
 
-$content = new View([
-    'title' => 'Welcome to the eSHOP',
-    'products' => App::$db->getRowsWhere('items'),
-]);
-
-
-$nav = new Navigation();
+if ($row_id === null) {
+    header("Location: /admin/list.php");
+    exit();
+}
 
 $form = new EditForm();
 
-$page = new BasePage([
-    'title' => 'Index',
-    'content' => $form->render(),
+$form->fill(App::$db->getRowById('items', $row_id));
+
+if ($form->validate()) {
+    $clean_inputs = $form->values();
+
+    App::$db->updateRow('items', $row_id, $clean_inputs);
+
+    $p = 'Items info was changed';
+}
+
+$content = new View([
+    'title' => 'Edit item',
+    'form' => $form->render(),
+    'message' => $p ?? null
 ]);
-//
-//if ($form->validate()) {
-//
-//    $clean_inputs = $form->values();
-//    $items= App::$db->insertRow('items', $clean_inputs);
-//}
+
+$page = new BasePage([
+    'title' => 'Edit Item',
+    'content' => $content->render(ROOT . '/app/templates/content/forms.tpl.php')
+]);
 
 print $page->render();
 
 
-?>
