@@ -1,28 +1,7 @@
 <?php
-
-use App\App;
-use App\Views\BasePage;
-use Core\View;
+use App\Controllers\HomeController;
 
 require '../bootloader.php';
 
-if (App::$session->getUser()) {
-    $h3 = "Welcome back {$_SESSION['email']}, we've missed you";
-} else {
-    $h3 = 'Jus neprisijunges';
-}
-
-$content = new View([
-    'title' => 'Welcome to your eSHOP',
-    'heading' => $h3,
-    'products' => App::$db->getRowsWhere('items')
-]);
-
-$page = new BasePage([
-    'title' => 'Shop',
-    'content' => $content->render(ROOT . '/app/templates/content/index.tpl.php')
-]);
-
-print $page->render();
-
-?>
+$controller = new HomeController();
+print $controller->index();

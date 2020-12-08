@@ -1,14 +1,1 @@
-{
-  "users": [
-    {
-      "email": "test@test.lt",
-      "password": "test"
-    },
-    {
-      "email": "test@test.com",
-      "password": "tes1"
-    }
-  ],
-  "items": [],
-  "track_users": []
-}
+{"users":[{"email":"test@test.lt","password":"test"},{"email":"test@test.com","password":"tes1"}],"items":[],"track_users":[]}

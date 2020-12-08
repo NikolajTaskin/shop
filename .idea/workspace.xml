@@ -20,15 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05b9a15-917b-4f68-a5de-7b1bc03f8d35" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/DeleteForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/classes/Abstracts/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/classes/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/classes/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Project su Dainium.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project su Dainium.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/AddForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/AddForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/DeleteForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/DeleteForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/EditForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/EditForm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/content/index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/content/index.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/form.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/form.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/table.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/table.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/admin/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/admin/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/admin/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/admin/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +78,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="COPY_ALWAYS" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -114,6 +120,7 @@
       <workItem from="1607288436902" duration="61000" />
       <workItem from="1607288517800" duration="5682000" />
       <workItem from="1607327790473" duration="10238000" />
+      <workItem from="1607422200274" duration="1156000" />
     </task>
     <servers />
   </component>
@@ -133,6 +140,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="951" y="61" key="#com.intellij.ide.util.MemberChooser" timestamp="1607422952420">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="951" y="61" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607422952420" />
     <state x="808" y="369" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606985766253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -146,10 +157,10 @@
     </state>
     <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607328057602" />
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606912667236" />
-    <state x="531" y="193" key="NewPhpClassDialog" timestamp="1607328660065">
+    <state x="781" y="193" key="NewPhpClassDialog" timestamp="1607422884877">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="531" y="193" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1607328660065" />
+    <state x="781" y="193" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1607422884877" />
     <state x="664" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606990625048" />
     <state x="635" y="351" key="NewPhpFileDialog" timestamp="1607075957161">
       <screen x="0" y="0" width="1536" height="824" />
