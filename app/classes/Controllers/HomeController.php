@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Abstracts\Controller;
 use App\App;
 use App\Views\BasePage;
 use Core\View;
 
-class HomeController extends \App\Abstracts\Controller
+class HomeController extends Controller
 {
 
     /**
