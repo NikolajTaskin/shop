@@ -16,7 +16,7 @@ use App\App;
 function validate_user_unique(string $field_input, array &$field): bool
 {
     if (App::$db->getRowWhere('users', ['email' => $field_input])) {
-        $field['error'] = 'User with such email already exists';
+        $field['error'] = 'Toks vartotojas jau egzistuoja';
 
         return false;
     }
@@ -45,7 +45,25 @@ function validate_login(array $filtered_input, array &$form): bool
         return true;
     }
 
-    $form['error'] = 'wrong credentials';
+    $form['error'] = 'Suvesti neteisingi duomenys';
+
+    return false;
+}
+
+/**
+ * Used for deletion, checks if the fields value exists in database.
+ *
+ * @param string $field_input
+ * @param array $field
+ * @return bool
+ */
+function validate_row_exists(string $field_input, array &$field): bool
+{
+    if (App::$db->rowExists('pizzas', $field_input)) {
+        return true;
+    }
+
+    $field['error'] = 'Tokia eilute neegzistuoja';
 
     return false;
 }

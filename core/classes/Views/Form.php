@@ -2,7 +2,6 @@
 
 namespace Core\Views;
 
-use App\App;
 use Core\View;
 use Exception;
 
@@ -88,16 +87,22 @@ class Form extends View
      *Fills form inputs with given values
      *
      * @param array $values
+     * @throws Exception
      */
     public function fill(array $values): void
     {
         foreach ($values as $value_id => $value) {
-            if(isset($this->data['fields'][$value_id])) {
+            if (isset($this->data['fields'][$value_id])) {
                 $this->data['fields'][$value_id]['value'] = $value;
             } else {
                 throw new Exception("{$value_id} field doesnt exist");
             }
         }
+    }
+
+    static function action()
+    {
+        return filter_input(INPUT_POST, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
 }

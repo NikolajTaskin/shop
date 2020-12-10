@@ -31,6 +31,21 @@ class RegisterForm extends Form
                         ]
                     ]
                 ],
+                'name' => [
+                    'label' => 'Full Name',
+                    'type' => 'text',
+                    'value' => '',
+                    'validators' => [
+                        'validate_field_not_empty',
+                        'validate_field_has_space',
+                    ],
+                    'extra' => [
+                        'attr' => [
+                            'placeholder' => 'Full Name',
+                            'class' => 'input-field'
+                        ]
+                    ]
+                ],
                 'password' => [
                     'label' => 'Password',
                     'type' => 'password',
@@ -70,15 +85,15 @@ class RegisterForm extends Form
                         ]
                     ]
                 ],
-//                'clear' => [
-//                    'title' => 'Clear',
-//                    'type' => 'reset',
-//                    'extra' => [
-//                        'attr' => [
-//                            'class' => 'btn'
-//                        ]
-//                    ]
-//                ]
+                'clear' => [
+                    'title' => 'Clear',
+                    'type' => 'reset',
+                    'extra' => [
+                        'attr' => [
+                            'class' => 'btn'
+                        ]
+                    ]
+                ]
             ],
             'validators' => [
                 'validate_field_match' => [

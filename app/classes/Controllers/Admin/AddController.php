@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers\Admin;
 
 use App\App;
@@ -17,7 +18,7 @@ class AddController extends AuthController
         parent::__construct();
         $this->form = new AddForm();
         $this->page = new BasePage([
-            'title' => 'Add Items',
+            'title' => 'Add pizzas',
         ]);
     }
 
@@ -26,9 +27,9 @@ class AddController extends AuthController
         if ($this->form->validate()) {
             $clean_inputs = $this->form->values();
 
-            App::$db->insertRow('items', $clean_inputs);
+            App::$db->insertRow('pizzas', $clean_inputs);
 
-            $p = 'You added an item';
+            $p = 'You added an pizza';
         }
 
         $content = new View([
@@ -41,4 +42,5 @@ class AddController extends AuthController
 
         return $this->page->render();
     }
+
 }

@@ -9,6 +9,7 @@ use Core\View;
 
 class HomeController extends Controller
 {
+    protected BasePage $page;
 
     /**
      * Controller constructor.
@@ -24,6 +25,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->page = new BasePage([
+            'title' => 'Shop'
+        ]);
     }
 
     /**
@@ -50,27 +54,43 @@ class HomeController extends Controller
      * print $controller->my();
      *
      * @return string|null
+     * @throws \Exception
      */
     function index(): ?string
     {
+        // TODO: Implement index() method.
+
         if (App::$session->getUser()) {
-            $h3 = "Welcome back {$_SESSION['email']}, we've missed you";
+            $h3 = "Sveiki sugrize {$_SESSION['email']}";
         } else {
             $h3 = 'Jus neprisijunges';
         }
 
         $content = new View([
-            'title' => 'Welcome to your eSHOP',
+            'title' => 'Welcome to Pizzeria',
             'heading' => $h3,
-            'products' => App::$db->getRowsWhere('items')
+            'products' => App::$db->getRowsWhere('pizzas')
         ]);
 
-        $page = new BasePage([
-            'title' => 'Shop',
-            'content' => $content->render(ROOT . '/app/templates/content/index.tpl.php')
-        ]);
+        $this->page->setContent($content->render(ROOT . '/app/templates/content/index.tpl.php'));
 
-        return $page->render();
-        // TODO: Implement index() method.
+        return $this->page->render();
     }
+
+//    public function editList(): ?string
+//    {
+//        if (Form::action()) {
+//            if ($this->form->validate()) {
+//                $clean_inputs = $this->form->values();
+//
+//                App::$db->deleteRow('pizzas', $clean_inputs['id']);
+//            }
+//        }
+//
+//        $table = new ProductsTable();
+//
+//        $this->page->setContent($table->render());
+//
+//        return $this->page->render();
+//    }
 }

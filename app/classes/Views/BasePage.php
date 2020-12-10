@@ -33,5 +33,7 @@ class BasePage extends Page
     public function setContent($content)
     {
         $this->data['content'] = $content;
+
+
     }
 }

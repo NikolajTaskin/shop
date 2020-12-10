@@ -1,0 +1,12 @@
+# Code editors
+/.idea
+/.vscode
+
+# Composer
+/vendor
+composer.lock
+
+/app/data/db.json
+.DS_Store
+private_*
+*_private.*

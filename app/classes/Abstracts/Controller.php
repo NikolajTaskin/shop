@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Abstracts;
 
 /**
@@ -11,7 +10,7 @@ namespace App\Abstracts;
  */
 abstract class Controller
 {
-    protected $page;
+    protected \App\Views\BasePage $page;
 
     /**
      * Controller constructor.

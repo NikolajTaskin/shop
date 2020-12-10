@@ -51,15 +51,15 @@ class LoginForm extends Form
                         ]
                     ]
                 ],
-//                'clear' => [
-//                    'title' => 'Clear',
-//                    'type' => 'reset',
-//                    'extra' => [
-//                        'attr' => [
-//                            'class' => 'btn'
-//                        ]
-//                    ]
-//                ]
+                'clear' => [
+                    'title' => 'Clear',
+                    'type' => 'reset',
+                    'extra' => [
+                        'attr' => [
+                            'class' => 'btn'
+                        ]
+                    ]
+                ]
             ],
             'validators' => [
                 'validate_login'

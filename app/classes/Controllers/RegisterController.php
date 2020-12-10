@@ -9,11 +9,11 @@ use App\Views\BasePage;
 use App\Views\Forms\RegisterForm;
 use Core\View;
 
-
 class RegisterController extends GuestController
 {
     protected RegisterForm $form;
     protected BasePage $page;
+
     public function __construct()
     {
         parent::__construct();
@@ -30,9 +30,12 @@ class RegisterController extends GuestController
 
             unset($clean_inputs['password_repeat']);
 
-            App::$db->insertRow('users', $clean_inputs);
+            $role = [
+                'role' => 'user'
+            ];
+            App::$db->insertRow('users', $clean_inputs + $role);
 
-            header("Location: login.php");
+            header("Location: /login");
         }
 
         $content = new View([
@@ -44,4 +47,5 @@ class RegisterController extends GuestController
 
         return $this->page->render();
     }
+
 }

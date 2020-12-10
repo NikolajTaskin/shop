@@ -13,7 +13,7 @@
 function validate_field_not_empty(string $field_value, array &$field): bool
 {
     if ($field_value === '') {
-        $field['error'] = 'Field can\'t be empty';
+        $field['error'] = 'Paliktas neuzpildytas laukas';
         return false;
     } else return true;
 
@@ -73,7 +73,7 @@ function validate_field_match(array $form_values, array &$form, array $params): 
 {
     foreach ($params as $field_index) {
         if ($form_values[$params[0]] !== $form_values[$field_index]) {
-            $form['fields'][$field_index]['error'] = strtr('filed doesn\'t match with @laukas ', [
+            $form['fields'][$field_index]['error'] = strtr('Laukelis nesutampa su @laukas ', [
                 '@laukas' => $form['fields'][$params[0]]['label']
             ]);
 
@@ -101,7 +101,7 @@ function validate_email(string $field_input, array &$field): bool
     $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
 
     if (!preg_match($regex, $field_input)) {
-        $field['error'] = 'Invalid email';
+        $field['error'] = 'Neteisingai uzpildete el.pasto formata. Pvz.: test@email.com';
         return false;
     }
 

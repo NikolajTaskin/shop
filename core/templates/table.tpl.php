@@ -8,7 +8,6 @@
         <tr>
             <?php foreach ($row as $col): ?>
                 <td><?php print $col; ?></td>
-
             <?php endforeach; ?>
         </tr>
     <?php endforeach; ?>

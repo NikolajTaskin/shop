@@ -13,18 +13,25 @@ class Navigation extends \Core\View
 
     public function generate()
     {
-        $nav = ['/index.php' => 'Home'];
+        $nav = [App::$router::getUrl('index') => 'Home'];
 
         if (App::$session->getUser()) {
-            return $nav + [
-                    '/Admin/add.php' => 'Add',
-                    '/Admin/list.php' => 'List',
-                    '/logout.php' => 'Logout',
+            if (App::$session->getUser()['role'] === 'admin') {
+                return $nav + [
+                        App::$router::getUrl('add') => 'Add',
+                        App::$router::getUrl('list') => 'Edit',
+                        App::$router::getUrl('logout') => 'Logout',
                 ];
-        } else {
+            } else {
+                return $nav + [
+                        App::$router::getUrl('logout') => 'Logout',
+                ];
+            }
+
+        }  else  {
             return $nav + [
-                    '/register.php' => 'Register',
-                    '/login.php' => 'Login',
+                    App::$router::getUrl('register') => 'Register',
+                    App::$router::getUrl('login') => 'Login',
                 ];
         }
     }

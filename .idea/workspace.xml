@@ -23,22 +23,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05b9a15-917b-4f68-a5de-7b1bc03f8d35" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/classes/Controllers/Admin/AddController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/classes/Controllers/Admin/EditController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/classes/Controllers/Admin/ListController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/classes/Controllers/Base/AuthController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/classes/Controllers/Base/GuestController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/classes/Controllers/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/classes/Controllers/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/TableForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/classes/Abstracts/Router.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Abstracts/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Abstracts/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Controllers/Admin/AddController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/Admin/AddController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Controllers/Admin/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/Admin/EditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Controllers/Admin/ListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/Admin/ListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Controllers/Base/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/Base/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Controllers/Base/GuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/Base/GuestController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/classes/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Controllers/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/classes/Views/BasePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/BasePage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/AddForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/AddForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/DeleteForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/DeleteForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/EditForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/Admin/TableForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/LoginForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/Forms/LoginForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Forms/RegisterForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/Forms/RegisterForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/classes/Views/Navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/classes/Views/Navigation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/admin/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/admin/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/admin/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/admin/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/functions/form/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/functions/form/validators.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/functions/form/validators.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/functions/generators.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/content/forms.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/content/forms.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/content/index.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/content/index.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootloader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/classes/FileDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/classes/FileDB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/classes/Views/Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/classes/Views/Form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/functions/file.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/functions/form/core.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/functions/form/validators.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/functions/form/validators.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/form.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/form.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/page.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/page.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/table.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/table.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/admin/add.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/admin/edit.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/admin/list.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/install.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/media/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/media/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/register.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +104,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../php-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phpkonsultacija" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -126,6 +156,9 @@
       <workItem from="1607327790473" duration="10238000" />
       <workItem from="1607422200274" duration="3071000" />
       <workItem from="1607459717997" duration="6353000" />
+      <workItem from="1607505679299" duration="5351000" />
+      <workItem from="1607547775327" duration="3403000" />
+      <workItem from="1607586605600" duration="11651000" />
     </task>
     <servers />
   </component>
@@ -157,20 +190,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="808" y="369" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606985766253" />
-    <state x="552" y="218" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607465727573">
+    <state x="552" y="218" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607595645676">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="552" y="218" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1607465727573" />
+    <state x="552" y="218" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1607595645676" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606984576483" />
-    <state x="592" y="218" key="FileChooserDialogImpl" timestamp="1607462710277">
+    <state x="592" y="218" key="FileChooserDialogImpl" timestamp="1607588441184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607462710277" />
+    <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607588441184" />
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606912667236" />
-    <state x="374" y="213" key="NewPhpClassDialog" timestamp="1607465551866">
+    <state x="374" y="213" key="NewPhpClassDialog" timestamp="1607506009838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="374" y="213" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1607465551866" />
+    <state x="374" y="213" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1607506009838" />
     <state x="664" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606990625048" />
     <state x="635" y="351" key="NewPhpFileDialog" timestamp="1607075957161">
       <screen x="0" y="0" width="1536" height="824" />
@@ -194,18 +227,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="308" y="35" width="873" height="757" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1607328100059" />
-    <state x="718" y="78" width="579" height="592" key="find.popup" timestamp="1607459972836">
+    <state x="693" y="167" width="579" height="592" key="find.popup" timestamp="1607593934936">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="718" y="78" width="579" height="592" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1607459972836" />
+    <state x="693" y="167" width="579" height="592" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1607593934936" />
     <state x="683" y="291" key="refactoring.ChangeSignatureDialog" timestamp="1606902694415">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="683" y="291" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606902694415" />
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1607465637811">
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1607596766885">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607465637811" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607596766885" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606820005226" />
   </component>
 </project>

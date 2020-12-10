@@ -1,6 +1,8 @@
 <?php
 
+
 namespace App\Controllers\Admin;
+
 
 use App\App;
 use App\Controllers\Base\AuthController;
@@ -18,7 +20,7 @@ class EditController extends AuthController
         parent::__construct();
         $this->form = new AddForm();
         $this->page = new BasePage([
-            'title' => 'Edit Item',
+            'title' => 'Edit pizza',
         ]);
     }
 
@@ -27,22 +29,22 @@ class EditController extends AuthController
         $row_id = $_GET['id'] ?? null;
 
         if ($row_id === null) {
-            header("Location: /admin/list.php");
+            header("Location: /list");
             exit();
         }
 
-        $this->form->fill(App::$db->getRowById('items', $row_id));
+        $this->form->fill(App::$db->getRowById('pizzas', $row_id));
 
         if ($this->form->validate()) {
             $clean_inputs = $this->form->values();
 
-            App::$db->updateRow('items', $row_id, $clean_inputs);
+            App::$db->updateRow('pizzas', $row_id, $clean_inputs);
 
-            $p = 'You edited the item';
+            $p = 'You edited the pizza';
         }
 
         $content = new View([
-            'title' => 'Edit item',
+            'title' => 'Edit pizza',
             'form' => $this->form->render(),
             'message' => $p ?? null
         ]);
@@ -51,4 +53,5 @@ class EditController extends AuthController
 
         return $this->page->render();
     }
+
 }

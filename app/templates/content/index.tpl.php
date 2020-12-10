@@ -1,19 +1,53 @@
-<h1 class="header main_header"><?php print $data['title']; ?></h1>
+<h1 class="header header--main"><?php print $data['title']; ?></h1>
 <h3 class="header"><?php print $data['heading']; ?></h3>
 <section class="grid-container">
 
     <?php foreach ($data['products'] as $product) : ?>
+        <?php if (App\App::$session->getUser()): ?>
 
-        <div class="item_card">
-            <h4><?php print $product['name']; ?></h4>
-            <img class="item_image" src="<?php print $product['img']; ?>" alt="">
-            <p><?php print $product['description']; ?></p>
-            <p class="price"><?php print $product['price']; ?> $</p>
-<!--            <form method="POST" action="/admin/edit.php">-->
-<!--                <input type="hidden" name="id" value="--><?php //print $product['id']; ?><!--">-->
-<!--            </form>-->
-        </div>
+            <?php if (App\App::$session->getUser()['role'] === 'admin') : ?>
 
+                         <div class="grid-item">
+                            <h4><?php print $product['name']; ?></h4>
+                            <img class="product-img" src="<?php print $product['img']; ?>" alt="">
+                            <p><?php print $product['price']; ?> $</p>
+                             <button>Edit</button>
+                             <button>Delete</button>
+                        </div>
+
+            <?php else: ?>
+                        <div class="grid-item">
+                            <h4><?php print $product['name']; ?></h4>
+                            <img class="product-img" src="<?php print $product['img']; ?>" alt="">
+                            <p><?php print $product['price']; ?> $</p>
+                            <button>Order</button>
+                        </div>
+            <?php endif; ?>
+
+        <?php else: ?>
+
+                <div class="grid-item">
+                    <h4><?php print $product['name']; ?></h4>
+                    <img class="product-img" src="<?php print $product['img']; ?>" alt="">
+                    <p><?php print $product['price']; ?> $</p>
+                </div>
+
+        <?php endif; ?>
     <?php endforeach; ?>
 
 </section>
+<?php if (App\App::$session->getUser()): ?>
+
+    <?php if (App\App::$session->getUser()['role'] === 'admin') : ?>
+
+        <button>Create</button>
+
+    <?php else: ?>
+
+    <?php endif; ?>
+
+<?php else: ?>
+
+    <button>Login</button>
+
+<?php endif; ?>

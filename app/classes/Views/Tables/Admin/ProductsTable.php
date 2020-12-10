@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Views\Forms\Admin;
+namespace App\Views\Tables\Admin;
 
 use App\App;
 use App\Views\Forms\Admin\DeleteForm;
 use Core\Views\Link;
 use Core\Views\Table;
 
-class TableForm extends Table
+class ProductsTable extends Table
 {
     public function __construct()
     {
-        $rows = App::$db->getRowsWhere('items');
+        $rows = App::$db->getRowsWhere('pizzas');
 
         foreach ($rows as $id => $row) {
             $link = new Link([
-                'link' => "/admin/edit.php?id={$id}",
+                'link' => "/edit?id={$id}",
                 'text' => 'Edit'
             ]);
 
@@ -27,11 +27,11 @@ class TableForm extends Table
 
         parent::__construct([
             'headers' => [
-                'Item',
+                'Pizza',
                 'Price',
                 'Image url',
-                'Description',
-                'Options'
+                'Options',
+                'Remove'
             ],
             'rows' => $rows
         ]);

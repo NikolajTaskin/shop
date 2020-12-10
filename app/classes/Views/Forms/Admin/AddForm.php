@@ -14,7 +14,7 @@ class AddForm extends Form
             ],
             'fields' => [
                 'name' => [
-                    'label' => 'Title',
+                    'label' => 'Pizza name',
                     'type' => 'text',
                     'value' => '',
                     'validators' => [
@@ -22,7 +22,7 @@ class AddForm extends Form
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'Title',
+                            'placeholder' => 'Pizza name',
                             'class' => 'input-field'
                         ]
                     ]
@@ -31,15 +31,13 @@ class AddForm extends Form
                     'label' => 'Price',
                     'type' => 'number',
                     'value' => '',
-
                     'validators' => [
                         'validate_field_not_empty',
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'Price',
-                            'class' => 'input-field',
-                            'min' => 0,
+                            'placeholder' => 'price',
+                            'class' => 'input-field'
                         ]
                     ]
                 ],
@@ -52,27 +50,15 @@ class AddForm extends Form
                     ],
                     'extra' => [
                         'attr' => [
-                            'placeholder' => 'http://url',
+                            'placeholder' => 'url of tasty image',
                             'class' => 'input-field'
-                        ]
-                    ]
-                ],
-                'description' => [
-                    'label' => 'Description',
-                    'type' => 'textarea',
-                    'validators' => [
-                        'validate_field_not_empty'
-                    ],
-                    'extra' => [
-                        'attr' => [
-                            'placeholder' => 'Short description',
                         ]
                     ]
                 ],
             ],
             'buttons' => [
                 'submit' => [
-                    'title' => 'Add item',
+                    'title' => 'Submit',
                     'type' => 'submit',
                     'extra' => [
                         'attr' => [
@@ -80,15 +66,15 @@ class AddForm extends Form
                         ]
                     ]
                 ],
-//                'clear' => [
-//                    'title' => 'Clear',
-//                    'type' => 'reset',
-//                    'extra' => [
-//                        'attr' => [
-//                            'class' => 'btn'
-//                        ]
-//                    ]
-//                ]
+                'clear' => [
+                    'title' => 'Clear',
+                    'type' => 'reset',
+                    'extra' => [
+                        'attr' => [
+                            'class' => 'btn'
+                        ]
+                    ]
+                ]
             ]
         ]);
     }
